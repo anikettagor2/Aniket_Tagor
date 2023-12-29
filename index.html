@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="trailer">
+        <i id="trailer-icon" class="fa-solid fa-arrow-up-right"></i>
+      </div>
+      
+    <!-- <div class="side_nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li class="con01"><a href="#about">About</a></li>
+            <li class="con02"><a href="#qualification">Qualification</a></li>
+            <li class="con03"><a href="#Conatct">Conatct</a></li>
+        </ul>
+    </div> -->
+    <div class="hero" id="home">
+       <div class="lf_side">
+        <p style="color: whitesmoke;">I am</p>
+        <h1>Aniket Tagor</h1>
+        <div class="wrapper">
+            <div class="typing-demo">
+               Full Stack Web <span style="color: white;">Developer.</span>
+            </div>
+        </div>
+        <div class="intro">
+            <p>
+                 I'm deeply passionate about full-stack web development, fluent in technologies like JavaScript, React for front-end magic, and wielding Express and Node.js for a robust backend. I love crafting seamless digital experiences that blend creativity with technical finesse.
+            </p>
+        </div>
+       </div>
+       <div class="rt_side">
+        <div class="image_container">
+
+        </div>
+       </div>
+    </div>
+    <!-- About section will start from here  -->
+    <div class="container">
+        
+        
+    </div>
+    <script>
+        const trailer = document.getElementById("trailer");
+const animateTrailer = (e, interacting) => {
+  const x = e.clientX - trailer.offsetWidth / 2,
+        y = e.clientY - trailer.offsetHeight / 2;
+  const keyframes = {
+    transform: `translate(${x}px, ${y}px) scale(${interacting ? 8 : 1})`
+  }
+  trailer.animate(keyframes, { 
+    duration: 800, 
+    fill: "forwards" 
+  });
+}
+const getTrailerClass = type => {
+  switch(type) {
+    case "video":
+      return "fa-solid fa-play";
+    default:
+      return "fa-solid fa-arrow-up-right"; 
+  }
+}
+window.onmousemove = e => {
+  const interactable = e.target.closest(".interactable"),
+        interacting = interactable !== null; 
+  const icon = document.getElementById("trailer-icon");  
+  animateTrailer(e, interacting);
+  trailer.dataset.type = interacting ? interactable.dataset.type : "";
+  if(interacting) {
+    icon.className = getTrailerClass(interactable.dataset.type);
+  }
+}
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+</body>
+</html>
